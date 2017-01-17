@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<% include ../partials/head %>
+  <title>TinyApp</title>
 </head>
 <body>
-    <!-- Add your EJS code here -->
-<!--<%= templateVars.urls %> -->
+    <header>
+        <% include ./partials/_header %>
+    </header>
     <ul>
       <% for (url in templateVars.urls) { %>
       <li><%= url %> : <%= templateVars.urls[url] %></li>
