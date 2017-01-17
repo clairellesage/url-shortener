@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 	<% include ../partials/head %>
+</head>
+<body>
+    <!-- Add your EJS code here -->
+<!--<%= templateVars.urls %> -->
+    <ul>
+      <% for (url in templateVars.urls) { %>
+      <li><%= url %> : <%= templateVars.urls[url] %> <a href ="">Shortened URL</a></li>
+      <% } %>
+    </ul>
+
+</body> 
+</html>
+
+
