@@ -3,15 +3,34 @@
 <head>
   <title>TinyApp</title>
 </head>
-<body>
+<body style="font-size:20px; padding:50px;">
     <header>
         <% include ./partials/_header %>
     </header>
-    <ul>
+    <p></p>
+    <table>
       <% for (url in templateVars.urls) { %>
-      <li><%= url %> : <%= templateVars.urls[url] %> <a href ="">Shortened URL</a></li>
+      <tr>
+      	<td>
+	      	<a href ="/urls/<%= url %>"> <%= url %> </a> : 
+	      	<%= templateVars.urls[url] %> 
+	    </td>
+	    <td>
+	      	<form method="GET" action="/urls/<%= url %>">
+	      		<input type="submit" value ="Edit">
+	      		</input>
+	      	</form>
+	    </td>
+	    <td>
+	      	<form method="POST" action="/urls/<%= url %>/delete">
+	      		<input type="submit" value ="Delete"></input>
+	      	</form>
+	    </td>
       <% } %>
-    </ul>
+    </tr>
+</table>
+
+<p><a href="/urls/new">Add a url to this list</a></p>
 
 </body> 
 </html>
