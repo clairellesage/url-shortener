@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>TinyApp</title>
-</head>
+	<head>
+	  <title>TinyApp</title>
+	</head>
 <body style="font-size:20px; padding:50px;">
     <header>
         <% include ./partials/_header %>
     </header>
     <p></p>
     <table>
-      <% for (url in templateVars.urls) { %>
+      <% for (url in urls) { %>
       <tr>
       	<td>
 	      	<a href ="/urls/<%= url %>"> <%= url %> </a> : 
-	      	<%= templateVars.urls[url] %> 
+	      	<%= urls[url] %> 
 	    </td>
 	    <td>
 	      	<form method="GET" action="/urls/<%= url %>">
