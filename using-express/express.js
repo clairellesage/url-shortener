@@ -34,7 +34,6 @@ app.get("/", (req, res) => {
 	let templateVars = {
 		username: req.cookies["username"],
 	};
-	console.log(req.cookies)
  res.end("Hello!");
 });
 
@@ -52,26 +51,27 @@ app.get("/urls", (req, res) => {
 		urls: urlDatabase,
 	};
 	//check this
- res.render("urls_index", {templateVars: templateVars});
+ res.render("urls_index", templateVars);
 });
 
 app.get("/urls/new", (req, res) => {
 	let templateVars = {
 username: req.cookies["username"],
 	};
- res.render("urls_new");
+ res.render("urls_new", templateVars);
 });
 
 //when you type in urls/ and then the id, 
 //it will render urls_show.ejs
 app.get("/urls/:id", (req, res) => {
+	let shortURL = req.params.id
+ 	let longURL = urlDatabase[shortURL]
 	let templateVars = {
 	username: req.cookies["username"],
-		};
- let shortURL = req.params.id
- let longURL = urlDatabase[shortURL]
- templateVars += {shortURL: longURL };
- res.render("urls_show", {short: shortURL, long: longURL});
+	shortURL : shortURL,
+	longURL : longURL
+		};	
+ res.render("urls_show", templateVars);
 });
 
 //post the function generateRandomString	
@@ -102,7 +102,7 @@ app.post("/urls/:id", (req, res) => {
 })
 
 ///shortURLs in the urlDatabase will redirect to their longURLs
-app.get("/u/:shortURL", (req, res) => {
+app.get("/u/:shortURL", (req, res) => {re
 	let shortURL= req.params.shortURL; 
   let longURL = urlDatabase[shortURL];
   if (shortURL = false) {
@@ -112,9 +112,12 @@ app.get("/u/:shortURL", (req, res) => {
 	}
 });
 
-app.get("/login", (req, res) => {
-	res.render("urls_login");
-});
+// app.get("/login", (req, res) => {
+// 		let templateVars = {
+// 	username: req.cookies["username"],
+// 		};	
+// 	res.render("urls_login", templateVars);
+// });
 
 app.post("/login", (req, res) => {
 	let user = req.body.username;
@@ -122,8 +125,13 @@ app.post("/login", (req, res) => {
 	res.redirect("/");
 });
 
+app.post("/logout", (req, res) => {
+	res.clearCookie("username")
+	res.redirect("/");
+});
 // Add a route to accept a POST to /login in your Express server.
 
 // We will just track a string value called username using a cookie.
 
 // Use the endpoint to set the cookie parameter called username to the value submitted in the request body via the form.
+
