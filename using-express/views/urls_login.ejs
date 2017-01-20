@@ -4,19 +4,20 @@
   <title>TinyApp</title>
 </head>
 	 <body style="font-size:20px; padding:50px;">
-	    <header>
-	        <% include ./partials/_header %>
+	    <header>TinyApp
 	    </header>
  	<% if (!username) { %>
  		<table>
-		<form method = "POST" action ="/login">
-			<input name ="username" type ="text" placeholder="username"></input>
-			<input name ="password" type ="password" placeholder="password"></input>
-			<input type ="submit" value ="Login"></input>
-		</form>
-			<form method="get" action="/register">
-				<button type="submit">Register</button>
-			</form>
+			<tr>
+				<form method = "POST" action ="/urls/login">
+					<input name ="username" type ="text" placeholder="username"></input>
+					<input name ="password" type ="password" placeholder="password"></input>
+					<input type ="submit" value ="Login"></input>
+				</form>
+			</tr>
+			<tr>
+				<p>Don't have an account? <a href="/register">Register</a>
+			</tr>
 		</table>
 	<% } else { %>
 		<table>

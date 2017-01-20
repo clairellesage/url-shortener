@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 	<header>TinyApp</header>
- 	<% if (!username) { %>
- 		<table>
-		<form method = "POST" action ="/login">
-			<input name ="username" type ="text" placeholder="username"></input>
-			<input name ="password" type ="password" placeholder="password"></input>
-			<input type ="submit" value ="Login"></input>
-		</form>
-			<form method="get" action="/register">
-				<button type="submit">Register</button>
+		<body>
+	 	<% if (!email) { %>
+	 		<table>
+	 			<p>You're not logged in. <a href="/urls/login">Log in.</a></p>
+			</table>
+		<% } else { %>
+			<table>
+			<%= email %>
+		 	<form method = "POST" action ="/logout">
+				<input type ="submit" value ="Logout"></input>
 			</form>
-		</table>
-	<% } else { %>
-		<table>
-		<%= username %>
-	 	<form method = "POST" action ="/logout">
-			<input type ="submit" value ="Logout"></input>
-		</form>
-		</table>
-	<% } %>
+			</table>
+		<% } %>
+	</body>
 </html>
+	
