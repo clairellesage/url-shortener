@@ -6,11 +6,10 @@
 	 <body style="font-size:20px; padding:50px;">
 	    <header>TinyApp
 	    </header>
- 	<% if (!username) { %>
  		<table>
 			<tr>
 				<form method = "POST" action ="/urls/login">
-					<input name ="username" type ="text" placeholder="username"></input>
+					<input name ="email" type ="text" placeholder="email"></input>
 					<input name ="password" type ="password" placeholder="password"></input>
 					<input type ="submit" value ="Login"></input>
 				</form>
@@ -19,13 +18,5 @@
 				<p>Don't have an account? <a href="/register">Register</a>
 			</tr>
 		</table>
-	<% } else { %>
-		<table>
-		<%= username %>
-	 	<form method = "POST" action ="/logout">
-			<input type ="submit" value ="Logout"></input>
-		</form>
-		</table>
-	<% } %>
 </html>
 
