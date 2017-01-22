@@ -135,9 +135,10 @@ app.post("/register", (req, res) => {
 app.get("/login", (req, res) => {
 	//if statement if already logged in
 	if (userDb[req.session.userId]) {
-		res.redirect("/urls")
+		res.redirect("/urls");
 	}
-	res.render("urls_login", userDb)
+	res.status(403);
+	res.render("urls_login");
 })
 
 app.post("/login", (req, res) => {
@@ -197,4 +198,4 @@ app.post("/urls/:id", (req, res) => {
 
 app.listen(PORT, () => {
  console.log(`Example app listening on port ${PORT}!`);
-});
+});	
