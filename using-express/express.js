@@ -37,13 +37,9 @@ function generateRandomString() {
 //HOME
 app.get("/", (req, res) => {
 		if (req.session.userId && userDb[req.session.userId]) {
-		var templateVars = {
-			email: userDb[req.session.userId].email,
-			urls: userDb[req.session.userId].urls
-		}
-		res.render("urls_index", templateVars);
-	} else {
-		res.end("Hello!", userDb);
+			res.redirect("/urls");
+		} else {
+			res.redirect("/login");
 	}
 });
 
